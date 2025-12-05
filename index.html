@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form - Kalyndra's Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Cormorant:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(135deg, #f5ebe0 0%, #ede0d4 50%, #e6ccb2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #5e4b3c;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 253, 250, 0.98);
+            border-radius: 30px;
+            padding: 45px 40px;
+            box-shadow: 0 10px 40px rgba(139, 99, 76, 0.2);
+            border: 1.5px solid rgba(222, 205, 190, 0.6);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #dcc9b8;
+        }
+
+        .emoji-decoration {
+            font-size: 1.2em;
+            margin-bottom: 12px;
+            color: #9b7e69;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-family: 'Cormorant', serif;
+            font-size: 2.2em;
+            font-weight: 600;
+            margin: 15px 0 12px;
+            color: #6b5644;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.15em;
+            color: #7d6b5a;
+            margin: 12px 0 20px;
+        }
+
+        .intro-text {
+            line-height: 1.9;
+            margin: 8px 0;
+            font-size: 1.05em;
+            color: #6b5644;
+        }
+
+        .form-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            font-style: italic;
+            margin: 35px 0 10px;
+            color: #6b5644;
+            font-weight: 400;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            font-style: italic;
+            color: #8b7355;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #6b5644;
+            font-size: 1.05em;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #dcc9b8;
+            border-radius: 12px;
+            font-family: 'Crimson Text', serif;
+            font-size: 1em;
+            background: #fffdfb;
+            color: #5e4b3c;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #b8956a;
+            box-shadow: 0 0 0 3px rgba(184, 149, 106, 0.1);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .bullet-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .bullet-input::before {
+            content: "✦";
+            color: #b8956a;
+            font-size: 1.2em;
+        }
+
+        .bullet-input input {
+            flex: 1;
+        }
+
+        .submit-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #dcc9b8;
+            text-align: center;
+        }
+
+        .reminder-text {
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            color: #6b5644;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #c9a882 0%, #b8956a 100%);
+            color: white;
+            border: none;
+            padding: 16px 50px;
+            font-size: 1.1em;
+            font-family: 'Cormorant', serif;
+            font-weight: 500;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(184, 149, 106, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(184, 149, 106, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            font-style: italic;
+            color: #8b7355;
+        }
+
+        .footer-brand {
+            margin-top: 15px;
+            font-size: 1.1em;
+            color: #6b5644;
+            font-weight: 500;
+        }
+
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #e8dcc8 0%, #dcc9b8 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 20px;
+            border: 2px solid #c9a882;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-message h3 {
+            font-family: 'Cormorant', serif;
+            color: #6b5644;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 25px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="emoji-decoration">🌷˚ ༘♡ ·˚₊</div>
+            <h1>⋆.𐙚 ̊ 𝗛𝗲𝗹𝗹𝗼 𝗱𝗲𝗮𝗿! ꩜</h1>
+            <div class="subtitle">Your design journey starts here.</div>
+            <p class="intro-text">Terima kasih sudah mampir dan tertarik dengan layanan desain kami.</p>
+            <p class="intro-text">Biar hasil desainnya cantik dan pas sama style kamu, yuk bantu aku lengkapi orderannya di bawah ini ya! ♡</p>
+        </div>
+
+        <div class="form-title">🗯 ── ♡ ' 𝒪𝑅𝐷𝐸𝑅 𝐹𝒪𝑅𝑀! 🪻</div>
+        <div class="form-subtitle">(silakan isi dgn manis yaa, love ♡)</div>
+
+        <form id="orderForm">
+            <div class="form-group">
+                <label>—Nama :</label>
+                <input type="text" name="nama" required placeholder="Nama lengkap kamu">
+            </div>
+
+            <div class="form-group">
+                <label>—Kontak ( Whatsapp/Email ) :</label>
+                <input type="text" name="kontak" required placeholder="08xx atau email@example.com">
+            </div>
+
+            <div class="form-group">
+                <label>—Jenis Desain :</label>
+                <input type="text" name="jenis" required placeholder="Misal: Logo, Feed Instagram, Banner, dll">
+            </div>
+
+            <div class="form-group">
+                <label>—MoodBoard/Konsep :</label>
+                <div class="bullet-input">
+                    <input type="text" name="konsep1" placeholder="Deskripsikan konsep atau kirim link moodboard">
+                </div>
+                <div class="bullet-input">
+                    <input type="text" name="konsep2" placeholder="Tambahan konsep (opsional)">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>—Ukuran Desain :</label>
+                <input type="text" name="ukuran" required placeholder="Misal: 1080x1080px, A4, atau custom">
+            </div>
+
+            <div class="form-group">
+                <label>—Teks & Element Wajib :</label>
+                <div class="bullet-input">
+                    <input type="text" name="element1" placeholder="Teks atau elemen yang harus ada">
+                </div>
+                <div class="bullet-input">
+                    <input type="text" name="element2" placeholder="Teks atau elemen tambahan">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>—Format File ( PNG/JPG/PDF ) :</label>
+                <select name="format" required>
+                    <option value="">Pilih format file</option>
+                    <option value="PNG">PNG</option>
+                    <option value="JPG">JPG</option>
+                    <option value="PDF">PDF</option>
+                    <option value="PNG + JPG">PNG + JPG</option>
+                    <option value="Semua Format">Semua Format</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>—Deadline ( Tanggal/Hari, Jam ) :</label>
+                <input type="text" name="deadline" required placeholder="Misal: 15 Desember 2024, 18:00 WIB">
+            </div>
+
+            <div class="form-group">
+                <label>—Notes Tambahan :</label>
+                <div class="bullet-input">
+                    <textarea name="notes1" placeholder="Catatan khusus atau permintaan tambahan"></textarea>
+                </div>
+                <div class="bullet-input">
+                    <textarea name="notes2" placeholder="Informasi lain yang perlu kami tahu"></textarea>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <p class="reminder-text">Yukk Isi format ordernya, biar pesananmu langsung diproses tanpa nunggu lama.<br>Kami standby untuk bantu kapan saja! 😉</p>
+                <button type="submit" class="submit-btn">Kirim Pesanan ♡</button>
+                <div class="footer">
+                    <p>Thankyou for order, Big loOve</p>
+                    <p class="footer-brand">> Kalyndra's</p>
+                </div>
+            </div>
+        </form>
+
+        <div id="successMessage" class="success-message">
+            <h3>✨ Pesanan Berhasil Dikirim!</h3>
+            <p>Terima kasih! Kami akan segera menghubungi kamu. ♡</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            let message = "🌷 *ORDER FORM - KALYNDRA'S DESIGN* 🌷\n\n";
+            
+            message += `👤 *Nama:* ${formData.get('nama')}\n`;
+            message += `📱 *Kontak:* ${formData.get('kontak')}\n`;
+            message += `🎨 *Jenis Desain:* ${formData.get('jenis')}\n\n`;
+            
+            message += `💭 *MoodBoard/Konsep:*\n`;
+            if(formData.get('konsep1')) message += `✦ ${formData.get('konsep1')}\n`;
+            if(formData.get('konsep2')) message += `✦ ${formData.get('konsep2')}\n`;
+            message += `\n`;
+            
+            message += `📐 *Ukuran Desain:* ${formData.get('ukuran')}\n\n`;
+            
+            message += `📝 *Teks & Element Wajib:*\n`;
+            if(formData.get('element1')) message += `✦ ${formData.get('element1')}\n`;
+            if(formData.get('element2')) message += `✦ ${formData.get('element2')}\n`;
+            message += `\n`;
+            
+            message += `📄 *Format File:* ${formData.get('format')}\n`;
+            message += `⏰ *Deadline:* ${formData.get('deadline')}\n\n`;
+            
+            message += `📌 *Notes Tambahan:*\n`;
+            if(formData.get('notes1')) message += `✦ ${formData.get('notes1')}\n`;
+            if(formData.get('notes2')) message += `✦ ${formData.get('notes2')}\n`;
+            
+            message += `\n✨ _Thankyou for order, Big loOve!_`;
+            
+            // Encode untuk WhatsApp
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappNumber = "6285230218126"; // Nomor WhatsApp untuk konfirmasi pesanan
+            
+            // Tampilkan pesan sukses
+            document.getElementById('successMessage').classList.add('show');
+            this.style.display = 'none';
+            
+            // Redirect ke WhatsApp setelah 1.5 detik
+            setTimeout(() => {
+                if(whatsappNumber) {
+                    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+                } else {
+                    // Jika nomor belum diisi, copy ke clipboard
+                    navigator.clipboard.writeText(message);
+                    alert('📋 Pesan telah dicopy! Paste ke WhatsApp atau platform lainnya.');
+                }
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
